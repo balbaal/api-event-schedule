@@ -3,13 +3,14 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
 
 // load env
 require("dotenv").config();
 
 // mongoose connection
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/db-event-schedule", {
+mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
