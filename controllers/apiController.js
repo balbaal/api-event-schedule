@@ -1,8 +1,20 @@
 const eventModel = require("../models/Event");
 
 module.exports = {
-  getEvent: (req, res) => {
-    res.send("get event");
+  getEvent: async (req, res) => {
+    try {
+      const eventGet = await eventModel.find();
+      res.status(200).json({
+        status: "success",
+        message: "success to get list event",
+        data: eventGet,
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        message: "something wrong when trying to get event",
+      });
+    }
   },
   createEvent: async (req, res) => {
     const { title, location, participant, note } = req.body;
