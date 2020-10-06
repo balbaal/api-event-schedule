@@ -5,7 +5,7 @@ module.exports = {
     res.send("get event");
   },
   createEvent: async (req, res) => {
-    const { title, location, participant, note } = rqe.body;
+    const { title, location, participant, note } = req.body;
 
     try {
       const eventCreated = await eventModel.create({
